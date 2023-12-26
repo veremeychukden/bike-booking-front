@@ -1,0 +1,13 @@
+.header {
+  font-family: 'Saira Stencil One', sans-serif;
+  width: 100%;
+  font-size: 24px;
+  -webkit-text-stroke: 1px #000000;
+  -webkit-text-fill-color: #E8E8E8;
+  background: #696969;
+  text-shadow: 0px 4px 4px rgba(0,0,0,0.24);
+}
+
+.title {
+  margin-left: 16px;
+}
