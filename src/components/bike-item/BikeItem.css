@@ -1,0 +1,61 @@
+.bike-container {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 618px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #6FCF97;
+  border-radius: 10px;
+  background-color: #E8E8E8;
+}
+
+.left-content {
+  justify-content: left;
+}
+
+.right-content {
+  place-self: flex-end;
+}
+
+.first-frame h2 {
+  color: #333333;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.bike-name {
+  font-weight: 700;
+}
+
+.bike-id {
+  color: #717171;
+  font-size: 8px;
+}
+
+.second-frame p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.delete-button {
+  cursor: pointer;
+}
+
+.bike-price {
+  font-size: 24px;
+  color: #000000;
+  font-weight: 400;
+}
+
+.arrow-icon {
+  height: 20px;
+}
+
+select {
+  border: 1px solid #fff;
+  background-color: transparent;
+  border: none;
+}

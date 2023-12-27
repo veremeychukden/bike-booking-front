@@ -1,23 +1,46 @@
+import { useEffect, useState } from "react";
 import "./Bike.css";
+import axios from "axios";
+import BikeItem from "../bike-item/BikeItem";
 
-const Bike = ({ name, type, color, ID, status, price }) => {
+const Bike = () => {
+  const [bikes, setBikes] = useState([]);
+  useEffect(() => {
+    const getBikes = async () => {
+      await axios.get("http://localhost:8000/bikes/")
+      .then(bikes => setBikes(bikes.data))
+      .catch(err => console.log(err))
+    };
+    
+    getBikes();
+  }, []);
+
+  const deleteBikeHandler = async (ID) => {
+    await axios.delete(`http://localhost:8000/bikes/${ID}`)
+    .then(bikes => setBikes(bikes.data))
+    .catch(err => console.log(err))
+  }
+
+  const updateBikeHandler = async (ID, status) => {
+    await axios.patch(`http://localhost:8000/bikes/${ID}`, {
+      status: status
+    })
+    .then(bikes => setBikes(bikes.data))
+    .catch(err => console.log(err))
+  }
+
   return (
-    <div className='bike-container'>
-      <div className="left-content">
-        <div className='first-frame'>
-          <h2>
-            <span className='bike-name'>{name}</span> - {type} ({color})
-          </h2>
-          <p className='bike-id'>ID:{ID}</p>
-        </div>
-        <div className='second-frame'>
-          <p>STATUS: {status} ↓</p>
-        </div>
-      </div>
-      <div className="right-content">
-        <h2><span className="delete-button">x</span></h2>
-        <p className="bike-price">{price} UAH/hr.</p>
-      </div>
+    <div>
+       {
+        bikes ?
+        bikes.map((bike) => {
+          return(
+            <BikeItem {...bike} key={bike.ID} deleteBikeHandler={deleteBikeHandler} updateBikeHandler={updateBikeHandler} />
+          )
+        })
+        :
+        null
+      }
     </div>
   );
 };
